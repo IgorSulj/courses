@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Курсы{% endblock %}
+{% block content %}
+<h1>Курсы по программированию</h1>
+{% for category in categories %}
+    <div class="category">
+        <h2>{{ category.name }}</h2>
+        <div class="courses">
+        {% for course in courses %}
+        {% if course.category == category %}
+            <div class="course">
+            <h3>{{ course.name }}</h3>
+            <p>{{ course.description }}</p>
+            <strong>{{ course.price }} б.р.</strong>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+{% endfor %}
+<a href="{% url 'movies:products' %}"></a>
+<button id="button">Get Json</button>
+<div id="json"></div>
+{% endblock %}

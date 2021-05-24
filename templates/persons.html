@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Люди{% endblock %}
+{% block content %}
+{% comment %}
+Я не иду в армию
+{% endcomment %}
+{% for f in persons %}
+<div>
+    <h1>{{ f.name }}</h1>
+    <p>{{ f.surname }}</p>
+    {% for i in f.photos_set.all %}
+    <img src="{{ i.avatar.url }}" alt="">
+    {% endfor %}
+    {% for g in f.album_set.all %}
+    <div>
+        <h3>Имя альбома: {{ g.name }}</h3>
+        <div>
+            {% for k in g.imgalbum_set.all %}
+            <img src="{{ k.img.url }}" alt="" width="300px" height="200px">
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+<img src=" {{one_img.img.url}} " alt="">
+<a href="?pk={{ one_img.pk }}">Показать хозяина</a>
+{{ owners | join:', ' }}
+{% endblock %}

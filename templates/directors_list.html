@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Фильмы{% endblock %}
+{% block content %}
+
+{% for director in directors %}
+<div style="margin-bottom: 30px; border: 1px solid black; padding: 5px;">
+    <h3>{{ director }}</h3>
+</div>
+{% endfor %}
+{% endblock %}

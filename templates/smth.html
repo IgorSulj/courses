@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <base target="_blank">
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" formtarget="_self">
+    </form>
+{% if repositories %}
+{% for repos in repositories %}
+<br>
+<h3>{% if forloop.first %}Смердженные пулл реквесты{% else %}Несмердженные пулл реквесты{% endif %}</h3>
+<table border="1">
+    <tr>
+        <th>Название</th>
+        <th>Ссылка</th>
+        <th>Звезды</th>
+        <th>Пулл реквесты</th>
+    </tr>
+    {% for repo in repos %}
+        <tr>
+            <td>{{ repo.name }}</td>
+            <td><a href="{{ repo.url }}">{{ repo.url }}</a></td>
+            <td>{{ repo.stars }}</td>
+            <td>
+                {% for i in repo.pulls %}
+                <a href="{{ i.url }}">{{ i.url }}</a>, {{ i.comments }} комментариев<br>
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endfor %}
+{% endif %}
+</body>
+</html>

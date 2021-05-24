@@ -1,0 +1,20 @@
+a.navigate{
+    float:right;
+    margin: 10px;
+}
+div.category{
+    width: 100%;
+    float: left;
+}
+div.course{
+    width: 300px;
+    float: left;
+}
+div.teacher{
+    width: 120px;
+    float: left;
+}
+div.image{
+    overflow: hidden;
+    height: 100px;
+}

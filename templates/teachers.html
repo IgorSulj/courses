@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Преподаватели{% endblock %}
+{% block content %}
+<h1>Преподаватели</h1>
+{% for teacher in teachers %}
+    <div class="teacher">
+        <div class="image">
+            <img src="{% if teacher.photo %}{{ teacher.photo.url }}{% else %}{% static 'img/default.jpg' %}{% endif %}" alt="Фото" width="100px">
+        </div>
+        <h3>{{ teacher.name }}</h3>
+        <p>{{ teacher.specialization }}</p>
+    </div>
+{% endfor %}
+{% endblock %}

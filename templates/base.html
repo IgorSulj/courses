@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Title{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<a href="{% url 'movies:index' %}" class="navigate">Фильмы</a>
+<a href="{% url 'movies:directors' %}" class="navigate">Режиссёры</a>
+<a href="{% url 'persons:index' %}" class="navigate">Люди</a>
+<a href="{% url 'main:teachers' %}" class="navigate">Учителя</a>
+<a href="{% url 'main:index' %}" class="navigate">Курсы</a>
+{% block content %}{% endblock %}
+<script>
+    let button = document.querySelector("button")
+    button.addEventListener("click", fn)
+    function fn(){
+        fetch("http://127.0.0.1:8000/movies/api/products")
+        .then((response)=>response.json())
+        .then((json)=>{console.log(json);
+            let div=document.querySelector("#json")
+            div.innerHTML=`<p>${json[0].name}</p>`})
+    }
+</script>
+</body>
+</html>

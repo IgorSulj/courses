@@ -1,0 +1,9 @@
+db.sqlite3
+/app_viewset/migrations/*.py
+!/app_viewset/migrations/__init__.py
+/movies/migrations/*.py
+!/movies/migrations/__init__.py
+/rocket/migrations/*.py
+!/rocket/migrations/__init__.py
+/restframe/migrations/*.py
+!/restframe/migrations/__init__.py
